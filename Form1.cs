@@ -91,6 +91,8 @@ namespace BurgerKiosk
             // 문자열 출력 (결과 표시)
             // 기본 형식: "총 금액: " + totalCost + "원"
             lblTotalCost.Text = "총 금액 : " + totalCost.ToString() + "원";
+
+            rdoHamBurger.Focus();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -117,6 +119,8 @@ namespace BurgerKiosk
             chkCola.Checked = false;
             chkCheese.Checked = false;
             chkSauce.Checked = false;
+
+            rdoHamBurger.Focus();
         }
     }
 }

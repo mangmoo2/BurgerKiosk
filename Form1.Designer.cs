@@ -66,7 +66,7 @@
             rdoHamBurger.Location = new Point(6, 49);
             rdoHamBurger.Name = "rdoHamBurger";
             rdoHamBurger.Size = new Size(76, 25);
-            rdoHamBurger.TabIndex = 1;
+            rdoHamBurger.TabIndex = 0;
             rdoHamBurger.TabStop = true;
             rdoHamBurger.Text = "햄버거";
             rdoHamBurger.UseVisualStyleBackColor = true;
@@ -80,7 +80,7 @@
             groupBox1.Location = new Point(27, 94);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(239, 250);
-            groupBox1.TabIndex = 2;
+            groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "메뉴 선택";
             // 
@@ -91,7 +91,7 @@
             rdoChickenBurger.Location = new Point(6, 187);
             rdoChickenBurger.Name = "rdoChickenBurger";
             rdoChickenBurger.Size = new Size(92, 25);
-            rdoChickenBurger.TabIndex = 3;
+            rdoChickenBurger.TabIndex = 2;
             rdoChickenBurger.TabStop = true;
             rdoChickenBurger.Text = "치킨버거";
             rdoChickenBurger.UseVisualStyleBackColor = true;
@@ -103,7 +103,7 @@
             rdoBulgogiBurger.Location = new Point(6, 117);
             rdoBulgogiBurger.Name = "rdoBulgogiBurger";
             rdoBulgogiBurger.Size = new Size(108, 25);
-            rdoBulgogiBurger.TabIndex = 2;
+            rdoBulgogiBurger.TabIndex = 1;
             rdoBulgogiBurger.TabStop = true;
             rdoBulgogiBurger.Text = "불고기버거";
             rdoBulgogiBurger.UseVisualStyleBackColor = true;
@@ -118,7 +118,7 @@
             groupBox2.Location = new Point(289, 94);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(200, 202);
-            groupBox2.TabIndex = 4;
+            groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "추가 옵션";
             // 
@@ -175,7 +175,7 @@
             groupBox3.Location = new Point(514, 93);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(239, 251);
-            groupBox3.TabIndex = 9;
+            groupBox3.TabIndex = 3;
             groupBox3.TabStop = false;
             groupBox3.Text = "주문 내역";
             // 
@@ -214,13 +214,14 @@
             btnClear.Location = new Point(633, 377);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(140, 46);
-            btnClear.TabIndex = 10;
+            btnClear.TabIndex = 3;
             btnClear.Text = "초기화";
             btnClear.UseVisualStyleBackColor = true;
             btnClear.Click += btnClear_Click;
             // 
             // Form1
             // 
+            AcceptButton = btnOrder;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
