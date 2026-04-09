@@ -114,9 +114,7 @@ namespace BurgerKiosk
             }
 
 
-            // 문자열 출력 (결과 표시)
-            // 기본 형식: "총 금액: " + totalCost + "원"
-            lblTotalCost.Text = "총 금액 : " + totalCost.ToString() + "원";
+            lblTotalCost.Text = "주문이 완료됐습니다.";
 
             groupBox1.Focus();
             rdoHamBurger.TabStop = true;
@@ -136,7 +134,9 @@ namespace BurgerKiosk
             lblTotalCost.Text = "총 금액 : 0원";
 
             // 3. 선택 상태 초기화
-            rdoHamBurger.Checked = true;
+            rdoHamBurger.Checked = false; 
+            rdoBulgogiBurger.Checked = false;
+            rdoChickenBurger.Checked = false;
 
             lblTotalCost.ForeColor = System.Drawing.Color.Black; // 색상도 초기화
 
