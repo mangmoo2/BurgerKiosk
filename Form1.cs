@@ -9,14 +9,6 @@ namespace BurgerKiosk
         public Form1()
         {
             InitializeComponent();
-            // Shown 이벤트를 사용하여 화면이 다 뜨고 난 직후에 체크 해제
-            this.Shown += (s, e) => {
-                rdoHamBurger.Checked = false;
-                rdoBulgogiBurger.Checked = false;
-                rdoChickenBurger.Checked = false;
-                lblTotalCost.Text = "총 금액 : 0원"; // 텍스트 유지
-                rdoHamBurger.TabStop = true;
-            };
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -31,13 +23,7 @@ namespace BurgerKiosk
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            lstOrder.Items.Clear();
-            lblTotalCost.Text = "총 금액 : 0원";
 
-            // 3. 선택 상태 초기화
-            rdoHamBurger.Checked = false;
-            rdoBulgogiBurger.Checked = false;
-            rdoChickenBurger.Checked = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -92,9 +78,8 @@ namespace BurgerKiosk
             }
 
             // 4. 즉시 라벨 업데이트
-            lblTotalCost.Text = "총 금액 : " + totalCost.ToString("N0") + "원";
+            lblTotalCost.Text = "총 금액 : " + totalCost.ToString() + "원";
         }
-
 
         private void Menu_CheckedChanged(object sender, EventArgs e)
         {
@@ -115,10 +100,9 @@ namespace BurgerKiosk
 
             // 문자열 출력 (결과 표시)
             // 기본 형식: "총 금액: " + totalCost + "원"
-            lblTotalCost.Text = "주문이 완료 됐습니다.";
+            lblTotalCost.Text = "총 금액 : " + totalCost.ToString() + "원";
 
             groupBox1.Focus();
-            rdoHamBurger.TabStop = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -135,9 +119,7 @@ namespace BurgerKiosk
             lblTotalCost.Text = "총 금액 : 0원";
 
             // 3. 선택 상태 초기화
-            rdoHamBurger.Checked = false; 
-            rdoBulgogiBurger.Checked = false;
-            rdoChickenBurger.Checked = false;
+            rdoHamBurger.Checked = true;
 
             lblTotalCost.ForeColor = System.Drawing.Color.Black; // 색상도 초기화
 
@@ -147,7 +129,6 @@ namespace BurgerKiosk
             chkSauce.Checked = false;
 
             groupBox1.Focus();
-            rdoHamBurger.TabStop = true;
         }
     }
 }
