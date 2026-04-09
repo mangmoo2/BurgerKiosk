@@ -9,6 +9,13 @@ namespace BurgerKiosk
         public Form1()
         {
             InitializeComponent();
+            // Shown 이벤트를 사용하여 화면이 다 뜨고 난 직후에 체크 해제
+            this.Shown += (s, e) => {
+                rdoHamBurger.Checked = false;
+                rdoBulgogiBurger.Checked = false;
+                rdoChickenBurger.Checked = false;
+                lblTotalCost.Text = "총 금액 : 0원"; // 텍스트 유지
+            };
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -23,7 +30,16 @@ namespace BurgerKiosk
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // 모든 라디오 버튼 체크 해제
+            rdoHamBurger.Checked = false;
+            rdoBulgogiBurger.Checked = false;
+            rdoChickenBurger.Checked = false;
 
+            // [핵심] 체크는 안 되어 있지만, Tab 키를 누르면 여기로 오게 설정
+            rdoHamBurger.TabStop = true;
+
+            lstOrder.Items.Clear();
+            lblTotalCost.Text = "총 금액 : 0원";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -78,7 +94,7 @@ namespace BurgerKiosk
             }
 
             // 4. 즉시 라벨 업데이트
-            lblTotalCost.Text = "총 금액 : " + totalCost.ToString() + "원";
+            lblTotalCost.Text = "총 금액 : " + totalCost.ToString("N0") + "원";
         }
 
         private void Menu_CheckedChanged(object sender, EventArgs e)
@@ -103,6 +119,7 @@ namespace BurgerKiosk
             lblTotalCost.Text = "총 금액 : " + totalCost.ToString() + "원";
 
             groupBox1.Focus();
+            rdoHamBurger.TabStop = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -129,6 +146,7 @@ namespace BurgerKiosk
             chkSauce.Checked = false;
 
             groupBox1.Focus();
+            rdoHamBurger.TabStop = true;
         }
     }
 }
