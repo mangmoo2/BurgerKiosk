@@ -37,6 +37,15 @@ namespace BurgerKiosk
             totalCost = 0;
             lstOrder.Items.Clear();
 
+            // 2. 메뉴 선택 여부 확인 
+            if (!rdoHamBurger.Checked && !rdoBulgogiBurger.Checked && !rdoChickenBurger.Checked)
+            {
+                // 에러 메시지 표시
+                lblTotalCost.Text = "메뉴를 선택하세요";
+                lblTotalCost.ForeColor = System.Drawing.Color.Red; // 에러는 빨간색으로 강조
+                return; 
+            }
+
             // 특징: 하나만 선택되므로 중복 계산 없음
             if (rdoHamBurger.Checked)
             {
@@ -101,6 +110,8 @@ namespace BurgerKiosk
             rdoHamBurger.Checked = false;
             rdoBulgogiBurger.Checked = false;
             rdoChickenBurger.Checked = false;
+
+            lblTotalCost.ForeColor = System.Drawing.Color.Black; // 색상도 초기화
 
             chkPotato.Checked = false;
             chkCola.Checked = false;
