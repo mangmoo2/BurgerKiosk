@@ -31,22 +31,14 @@ namespace BurgerKiosk
 
         }
 
-        private void btnOrder_Click(object sender, EventArgs e)
+        private void UpdateOrderInfo()
         {
-            // 주의: 계산 전 항상 0으로 초기화
+            // 1. 초기화 (계산 전 항상 0으로 시작)
             totalCost = 0;
             lstOrder.Items.Clear();
+            lblTotalCost.ForeColor = System.Drawing.Color.Blue;
 
-            // 2. 메뉴 선택 여부 확인 
-            if (!rdoHamBurger.Checked && !rdoBulgogiBurger.Checked && !rdoChickenBurger.Checked)
-            {
-                // 에러 메시지 표시
-                lblTotalCost.Text = "메뉴를 선택하세요";
-                lblTotalCost.ForeColor = System.Drawing.Color.Red; // 에러는 빨간색으로 강조
-                return; 
-            }
-
-            // 특징: 하나만 선택되므로 중복 계산 없음
+            // 2. RadioButton 확인 (즉시 리스트 추가 및 금액 합산)
             if (rdoHamBurger.Checked)
             {
                 totalCost += 5000;
@@ -63,36 +55,54 @@ namespace BurgerKiosk
                 lstOrder.Items.Add("치킨버거 3,000원");
             }
 
-            // 확장: 다른 체크박스에도 동일 패턴 적용
+            // 3. CheckBox 확인 (즉시 리스트 추가 및 금액 합산)
             if (chkPotato.Checked)
             {
                 totalCost += 3500;
-                lstOrder.Items.Add("감자튀기 3,500원");
+                lstOrder.Items.Add("감자튀김 3,500원");
             }
-
             if (chkCola.Checked)
             {
                 totalCost += 2500;
                 lstOrder.Items.Add("콜라 2,500원");
             }
-
             if (chkCheese.Checked)
             {
                 totalCost += 1500;
                 lstOrder.Items.Add("치즈 추가 1,500원");
             }
-
             if (chkSauce.Checked)
             {
                 totalCost += 500;
                 lstOrder.Items.Add("소스 추가 500원");
             }
 
+            // 4. 즉시 라벨 업데이트
+            lblTotalCost.Text = "총 금액 : " + totalCost.ToString() + "원";
+        }
+
+        private void Menu_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateOrderInfo();
+        }
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            UpdateOrderInfo();
+
+            // 2. 메뉴 선택 여부 확인
+            if (totalCost == 0) // UpdateOrderInfo 실행 후 totalCost가 0이라면
+            {
+                lblTotalCost.Text = "메뉴를 선택하세요";
+                lblTotalCost.ForeColor = System.Drawing.Color.Red;
+                return;
+            }
+
+
             // 문자열 출력 (결과 표시)
             // 기본 형식: "총 금액: " + totalCost + "원"
             lblTotalCost.Text = "총 금액 : " + totalCost.ToString() + "원";
 
-            rdoHamBurger.Focus();
+            groupBox1.Focus();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -109,9 +119,7 @@ namespace BurgerKiosk
             lblTotalCost.Text = "총 금액 : 0원";
 
             // 3. 선택 상태 초기화
-            rdoHamBurger.Checked = false;
-            rdoBulgogiBurger.Checked = false;
-            rdoChickenBurger.Checked = false;
+            rdoHamBurger.Checked = true;
 
             lblTotalCost.ForeColor = System.Drawing.Color.Black; // 색상도 초기화
 
@@ -120,7 +128,7 @@ namespace BurgerKiosk
             chkCheese.Checked = false;
             chkSauce.Checked = false;
 
-            rdoHamBurger.Focus();
+            groupBox1.Focus();
         }
     }
 }
